@@ -8,6 +8,15 @@ class Article extends CI_Controller {
     
     public function post($id = '') {
         $fila = $this->post_model->getPostByName($id);
-        echo $fila->post;
+        $data['titulo'] = $fila->post;
+        $data['app'] = 'Blog';
+        $data['post'] = $fila->post;
+        $data['descripcion'] = $fila->descripcion;
+        $data['contenido'] = $fila->contenido;
+        
+        $this->load->view('layouts/header', $data);
+        $this->load->view('layouts/nav', $data);
+        $this->load->view('post', $data);
+        $this->load->view('layouts/footer');
     }
 }
