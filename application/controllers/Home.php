@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Home extends CI_Controller {
     public function __construct() {
         parent::__construct();
+        $this->load->model('post_model');
     }
     
     public function index() {
@@ -12,8 +13,7 @@ class Home extends CI_Controller {
         $data['post'] = 'Blog';
         $data['descripcion'] = 'Bienvenido a mi página web con CodeIgniter';
         
-        $result = $this->db->get('post');
-        $data['consulta'] = $result;
+        $data['consulta'] = $this->post_model->getPost();
         
         $this->load->view('layouts/header', $data);
         $this->load->view('layouts/nav', $data);
