@@ -11,6 +11,10 @@ class Home extends CI_Controller {
         $data['app'] = 'Blog';
         $data['post'] = 'Blog';
         $data['descripcion'] = 'Bienvenido a mi página web con CodeIgniter';
+        
+        $result = $this->db->get('post');
+        $data['consulta'] = $result;
+        
         $this->load->view('layouts/header', $data);
         $this->load->view('layouts/nav', $data);
         $this->load->view('home');
