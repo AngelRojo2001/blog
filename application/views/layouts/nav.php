@@ -11,14 +11,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><?= $app; ?></a>
+                <a class="navbar-brand" href="<?= base_url(); ?>"><?= $app; ?></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="index.html">Inicio</a>
+                        <a href="<?= base_url(); ?>">Inicio</a>
                     </li>
                     <li>
                         <a href="about.html">Acerca De</a>
@@ -26,22 +26,28 @@
                     <li>
                         <a href="contact.html">Contacto</a>
                     </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" href="#" data-toggle="dropdown" style="background:transparent;">Iniciar Sesión</a>
-                        <div class="dropdown-menu" style="padding: 10px; padding-bottom: 0px; background: transparent;">
-                            <?= form_open('login'); ?>
-                                <div class="form-group">
-                                    <?= form_input(['type'=>'email', 'name'=>'email'], '', ['class'=>'form-control', 'placeholder'=>'Email', 'required'=>'required']); ?>
-                                </div>
-                                <div class="form-group">
-                                    <?= form_password('password', '', ['class'=>'form-control', 'placeholder'=>'Contraseña', 'required'=>'required']); ?>
-                                </div>
-                                <div class="form-group">
-                                    <?= form_submit('boton', 'INGRESAR', ['class'=>'btn btn-primary', 'style'=>'width: 380px;']); ?>
-                                </div>
-                            <?= form_close(); ?>
-                        </div>
-                    </li>
+                    <?php if ($this->session->userdata('login')): ?>
+                        <li>
+                            <a href="<?= site_url('login/logout') ?>">Cerrar Sesión</a>
+                        </li>
+                    <?php else: ?>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" href="#" data-toggle="dropdown" style="background:transparent;">Iniciar Sesión</a>
+                            <div class="dropdown-menu" style="padding: 10px; padding-bottom: 0px; background: transparent;">
+                                <?= form_open('login'); ?>
+                                    <div class="form-group">
+                                        <?= form_input(['type'=>'email', 'name'=>'email'], '', ['class'=>'form-control', 'placeholder'=>'Email', 'required'=>'required']); ?>
+                                    </div>
+                                    <div class="form-group">
+                                        <?= form_password('password', '', ['class'=>'form-control', 'placeholder'=>'Contraseña', 'required'=>'required']); ?>
+                                    </div>
+                                    <div class="form-group">
+                                        <?= form_submit('boton', 'INGRESAR', ['class'=>'btn btn-primary', 'style'=>'width: 380px;']); ?>
+                                    </div>
+                                <?= form_close(); ?>
+                            </div>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
