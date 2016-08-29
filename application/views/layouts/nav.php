@@ -28,6 +28,9 @@
                     </li>
                     <?php if ($this->session->userdata('login')): ?>
                         <li>
+                            <a href="<?= site_url('profile') ?>">Perfil</a>
+                        </li>
+                        <li>
                             <a href="<?= site_url('login/logout') ?>">Cerrar Sesión</a>
                         </li>
                     <?php else: ?>

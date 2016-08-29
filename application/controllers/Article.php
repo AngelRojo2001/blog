@@ -20,4 +20,17 @@ class Article extends CI_Controller {
         $this->load->view('post', $data);
         $this->load->view('layouts/footer');
     }
+    
+    public function nuevo() {
+        $data['titulo'] = 'Crear nuevo post';
+        $data['app'] = 'Perfil';
+        $data['post'] = 'Nuevo post';
+        $data['descripcion'] = 'Creando un nuevo post';
+        
+        
+        $this->load->view('layouts/header', $data);
+        $this->load->view('layouts/nav', $data);
+        $this->load->view('user/nuevo');
+        $this->load->view('layouts/footer');
+    }
 }
