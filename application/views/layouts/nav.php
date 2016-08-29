@@ -26,6 +26,22 @@
                     <li>
                         <a href="contact.html">Contacto</a>
                     </li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#" data-toggle="dropdown" style="background:transparent;">Iniciar Sesión</a>
+                        <div class="dropdown-menu" style="padding: 10px; padding-bottom: 0px; background: transparent;">
+                            <?= form_open('login'); ?>
+                                <div class="form-group">
+                                    <?= form_input(['type'=>'email', 'name'=>'email'], '', ['class'=>'form-control', 'placeholder'=>'Email', 'required'=>'required']); ?>
+                                </div>
+                                <div class="form-group">
+                                    <?= form_password('password', '', ['class'=>'form-control', 'placeholder'=>'Contraseña', 'required'=>'required']); ?>
+                                </div>
+                                <div class="form-group">
+                                    <?= form_submit('boton', 'INGRESAR', ['class'=>'btn btn-primary', 'style'=>'width: 380px;']); ?>
+                                </div>
+                            <?= form_close(); ?>
+                        </div>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
